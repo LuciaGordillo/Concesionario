@@ -1,0 +1,19 @@
+
+  <div class="modal-header"> 
+    <h4 class="modal-title">Titulo Modal</h4> 
+    <button class="close" aria-label="close" type="button" (click)="cancel()"> 
+      <span aria-hidden="true">&times;</span> 
+    </button> 
+  </div> 
+  <div class="modal-body"> 
+      <p>
+          ¿Seguro que quieres recargar la página?
+        </p>
+
+        <button class="btn btn-info me-2" (click)="refrescar()">
+        
+          <span jhiTranslate="concesionarioApp.coche.home.refreshListLabel">Recagar</span>
+        </button>
+        <button class="btn btn-danger me-2" (click)="cancel()"><span>Cancelar</span>
+        </button>
+  </div>
