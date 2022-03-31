@@ -2,6 +2,8 @@ package com.concesionario.app.service;
 
 import com.concesionario.app.domain.Coche;
 import com.concesionario.app.repository.CocheRepository;
+
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,7 +97,9 @@ public class CocheService {
     public Page<Coche> findAllWithEagerRelationships(Pageable pageable) {
         return cocheRepository.findAllWithEagerRelationships(pageable);
     }
-
+    public List<Coche> devolverTrue(){
+        return cocheRepository.findByVendidoTrue();
+    }
     /**
      * Get one coche by id.
      *

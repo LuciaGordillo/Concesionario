@@ -29,14 +29,16 @@ export class CocheService {
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http.get<ICoche>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http.get<ICoche>(`${this.resourceUrl}/${id}`, { observe: 'response' }); 
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<ICoche[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
-
+  query2(): Observable<EntityArrayResponseType> {
+    return this.http.get<ICoche[]>(`${this.resourceUrl+"/vendido/vendidos"}`, { observe: 'response' });
+  }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

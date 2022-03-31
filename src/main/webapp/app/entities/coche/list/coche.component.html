@@ -2,8 +2,16 @@
 <div>
   <h2 id="page-heading" data-cy="CocheHeading">
     <span jhiTranslate="concesionarioApp.coche.home.title">Coches</span>
-
+    <span><input class="me-2" type="text" name="buscar" placeholder="buscar"></span>
     <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary me-2" (click)="FiltrarTrue()">
+        <fa-icon icon="search" ></fa-icon>
+        <span>Buscar True</span>
+      </button>  
+      <button class="btn btn-secondary me-2">
+        <fa-icon icon="search" ></fa-icon>
+        <span>Buscar False</span>
+      </button>  
       <button class="btn btn-info me-2" (click)="refreshConfirm()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="concesionarioApp.coche.home.refreshListLabel">Confirm Refresh</span>

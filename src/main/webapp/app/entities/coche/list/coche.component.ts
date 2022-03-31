@@ -25,7 +25,6 @@ export class CocheComponent implements OnInit {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
-
   constructor(
     protected cocheService: CocheService,
     protected activatedRoute: ActivatedRoute,
@@ -54,7 +53,23 @@ export class CocheComponent implements OnInit {
         },
       });
   }
-
+  FiltrarTrue(page?: number, dontNavigate?: boolean): void {
+    this.isLoading = true;
+    const pageToLoad: number = page ?? this.page ?? 1;
+    
+    this.cocheService
+      .query2()
+      .subscribe({
+        next: (res: HttpResponse<ICoche[]>) => {
+          this.isLoading = false;
+          this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate);
+        },
+        error: () => {
+          this.isLoading = false;
+          this.onError();
+        },
+      });
+  }
   ngOnInit(): void {
     this.handleNavigation();
   }
@@ -123,4 +138,6 @@ export class CocheComponent implements OnInit {
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
   }
+
+
 }

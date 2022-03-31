@@ -172,6 +172,13 @@ public class CocheResource {
         return ResponseUtil.wrapOrNotFound(coche);
     }
 
+    @GetMapping("/coches/vendido/vendidos")
+    public List<Coche> getcochesVendidoTrue() {
+        log.debug("REST request to get Coche : {}");
+        return   ResponseEntity.ok().body(cocheService.devolverTrue()).getBody();
+    }
+
+
     /**
      * {@code DELETE  /coches/:id} : delete the "id" coche.
      *

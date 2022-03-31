@@ -25,6 +25,9 @@ public interface CocheRepository extends JpaRepository<Coche, Long> {
     default Page<Coche> findAllWithEagerRelationships(Pageable pageable) {
         return this.findAllWithToOneRelationships(pageable);
     }
+    
+    
+    List<Coche> findByVendidoTrue();
 
     @Query(
         value = "select distinct coche from Coche coche left join fetch coche.marca left join fetch coche.modelo",
@@ -37,4 +40,6 @@ public interface CocheRepository extends JpaRepository<Coche, Long> {
 
     @Query("select coche from Coche coche left join fetch coche.marca left join fetch coche.modelo where coche.id =:id")
     Optional<Coche> findOneWithToOneRelationships(@Param("id") Long id);
+
+  
 }
