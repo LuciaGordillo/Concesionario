@@ -26,8 +26,10 @@ public interface CocheRepository extends JpaRepository<Coche, Long> {
         return this.findAllWithToOneRelationships(pageable);
     }
     
+
+    Page<Coche> findByVendidoTrue(Pageable pageable);
     
-    List<Coche> findByVendidoTrue();
+    Page<Coche> findByVendidoFalse(Pageable pageable);
 
     @Query(
         value = "select distinct coche from Coche coche left join fetch coche.marca left join fetch coche.modelo",

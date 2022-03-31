@@ -97,8 +97,14 @@ public class CocheService {
     public Page<Coche> findAllWithEagerRelationships(Pageable pageable) {
         return cocheRepository.findAllWithEagerRelationships(pageable);
     }
-    public List<Coche> devolverTrue(){
-        return cocheRepository.findByVendidoTrue();
+    /*Get all the coches with vendido=true*/
+    public Page<Coche> devolverTrue(Pageable pageable){
+        return cocheRepository.findByVendidoTrue(pageable);
+    }
+        /*Get all the coches with vendido=false*/
+
+    public Page<Coche> devolverFalse(Pageable pageable){
+        return cocheRepository.findByVendidoFalse(pageable);
     }
     /**
      * Get one coche by id.
@@ -121,4 +127,5 @@ public class CocheService {
         log.debug("Request to delete Coche : {}", id);
         cocheRepository.deleteById(id);
     }
+
 }

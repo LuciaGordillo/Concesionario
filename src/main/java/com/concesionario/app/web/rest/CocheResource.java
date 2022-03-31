@@ -155,6 +155,7 @@ public class CocheResource {
         } else {
             page = cocheService.findAll(pageable);
         }
+       
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -172,13 +173,27 @@ public class CocheResource {
         return ResponseUtil.wrapOrNotFound(coche);
     }
 
-    @GetMapping("/coches/vendido/vendidos")
-    public List<Coche> getcochesVendidoTrue() {
-        log.debug("REST request to get Coche : {}");
-        return   ResponseEntity.ok().body(cocheService.devolverTrue()).getBody();
+    @GetMapping("/coches/vendido/true")
+    public ResponseEntity<List<Coche>>getcochesVendidoTrue(
+        @org.springdoc.api.annotations.ParameterObject Pageable pageable,
+        @RequestParam(value = "vendido", defaultValue = "true") boolean eagerload
+    ) {
+        Page<Coche> page;
+        page = cocheService.devolverTrue(pageable);
+        log.debug("REST request to get Coche : {}", pageable);
+        return ResponseEntity.ok().body(page.getContent());
     }
-
-
+  
+    @GetMapping("/coches/vendido/false")
+    public ResponseEntity<List<Coche>>getcochesVendidoFalse(
+        @org.springdoc.api.annotations.ParameterObject Pageable pageable,
+        @RequestParam(value = "vendido", defaultValue = "true") boolean eagerload
+    ) {
+        Page<Coche> page;
+        page = cocheService.devolverFalse(pageable);
+        log.debug("REST request to get Coche : {}", pageable);
+        return ResponseEntity.ok().body(page.getContent());
+    }
     /**
      * {@code DELETE  /coches/:id} : delete the "id" coche.
      *

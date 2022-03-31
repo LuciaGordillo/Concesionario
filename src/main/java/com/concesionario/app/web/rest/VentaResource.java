@@ -6,6 +6,7 @@ import com.concesionario.app.service.VentaService;
 import com.concesionario.app.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,6 +62,7 @@ public class VentaResource {
         if (venta.getId() != null) {
             throw new BadRequestAlertException("A new venta cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        
         Venta result = ventaService.save(venta);
         return ResponseEntity
             .created(new URI("/api/ventas/" + result.getId()))

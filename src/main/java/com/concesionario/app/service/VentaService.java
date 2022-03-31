@@ -2,6 +2,8 @@ package com.concesionario.app.service;
 
 import com.concesionario.app.domain.Venta;
 import com.concesionario.app.repository.VentaRepository;
+
+import java.time.LocalDate;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,7 @@ public class VentaService {
      */
     public Venta save(Venta venta) {
         log.debug("Request to save Venta : {}", venta);
+        venta.setFecha(LocalDate.now());
         return ventaRepository.save(venta);
     }
 
