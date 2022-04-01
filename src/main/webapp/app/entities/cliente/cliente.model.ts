@@ -4,6 +4,7 @@ export interface ICliente {
   nombre?: string;
   direccion?: string | null;
   telefono?: number;
+  empresa?: boolean | null;
 }
 
 export class Cliente implements ICliente {
@@ -12,7 +13,8 @@ export class Cliente implements ICliente {
     public dni?: string,
     public nombre?: string,
     public direccion?: string | null,
-    public telefono?: number
+    public telefono?: number,
+    public empresa?: boolean |null
   ) {}
 }
 

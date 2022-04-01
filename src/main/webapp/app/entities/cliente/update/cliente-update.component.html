@@ -58,9 +58,12 @@
             </small>
           </div>
         </div>
-      </div>
-
-      <div>
+        
+        <div class="row mb-3">
+          <label class="form-check" jhiTranslate="concesionarioApp.cliente.empresa" for="field_empresa">Tipo de cliente</label>
+         <input type="checkbox" class="form-check" name="empresa" id="field_empresa" data-cy="empresa" formControlName="empresa"/>
+          </div>
+     
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>

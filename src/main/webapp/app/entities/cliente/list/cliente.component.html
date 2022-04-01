@@ -43,6 +43,9 @@
           <th scope="col" jhiSortBy="telefono">
             <span jhiTranslate="concesionarioApp.cliente.telefono">Telefono</span> <fa-icon icon="sort"></fa-icon>
           </th>
+          <th scope="col" jhiSortBy="empresa">
+            <span jhiTranslate="concesionarioApp.cliente.empresa">Tipo de Empresa</span> <fa-icon icon="sort"></fa-icon>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -55,6 +58,7 @@
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.direccion }}</td>
           <td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.empresa }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

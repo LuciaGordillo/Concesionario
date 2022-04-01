@@ -21,7 +21,8 @@
       "dni": "Dni",
       "nombre": "Nombre",
       "direccion": "Direccion",
-      "telefono": "Telefono"
+      "telefono": "Telefono",
+      "empresa": "Tipo de Cliente"
     }
   }
 }

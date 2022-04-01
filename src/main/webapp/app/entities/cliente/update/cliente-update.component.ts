@@ -21,6 +21,7 @@ export class ClienteUpdateComponent implements OnInit {
     nombre: [null, [Validators.required]],
     direccion: [],
     telefono: [null, [Validators.required]],
+    empresa: [null, [Validators.required]]
   });
 
   constructor(protected clienteService: ClienteService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
@@ -71,6 +72,7 @@ export class ClienteUpdateComponent implements OnInit {
       nombre: cliente.nombre,
       direccion: cliente.direccion,
       telefono: cliente.telefono,
+      empresa: cliente.empresa,
     });
   }
 
@@ -82,6 +84,7 @@ export class ClienteUpdateComponent implements OnInit {
       nombre: this.editForm.get(['nombre'])!.value,
       direccion: this.editForm.get(['direccion'])!.value,
       telefono: this.editForm.get(['telefono'])!.value,
+      empresa: this.editForm.get(['empresa'])!.value,
     };
   }
 }

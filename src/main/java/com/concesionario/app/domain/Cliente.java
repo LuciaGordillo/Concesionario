@@ -35,6 +35,9 @@ public class Cliente implements Serializable {
     @NotNull
     @Column(name = "telefono", nullable = false)
     private Integer telefono;
+    
+    @Column(name = "empresa")
+    private Boolean empresa;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -63,7 +66,7 @@ public class Cliente implements Serializable {
     public void setDni(String dni) {
         this.dni = dni;
     }
-
+   
     public String getNombre() {
         return this.nombre;
     }
@@ -101,6 +104,16 @@ public class Cliente implements Serializable {
 
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
+    }
+    public void setEmpresa(Boolean empresa) {
+        this.empresa = empresa;
+    }
+    public Cliente empresa(boolean empresa) {
+        this.setEmpresa(empresa);
+        return this;
+    }
+    public void getEmpresa(Boolean empresa) {
+        this.empresa = empresa;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
