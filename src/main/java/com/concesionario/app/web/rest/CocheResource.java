@@ -2,6 +2,7 @@ package com.concesionario.app.web.rest;
 
 import com.concesionario.app.domain.Coche;
 import com.concesionario.app.repository.CocheRepository;
+import com.concesionario.app.repository.specifications.CocheSpecification;
 import com.concesionario.app.service.CocheService;
 import com.concesionario.app.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -11,6 +12,8 @@ import java.util.Objects;
 import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.internal.FilterHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -146,7 +149,7 @@ public class CocheResource {
     @GetMapping("/coches")
     public ResponseEntity<List<Coche>> getAllCoches(
         @org.springdoc.api.annotations.ParameterObject Pageable pageable,
-        @RequestParam(required = false, defaultValue = "true") boolean eagerload
+        @RequestParam(required = false, defaultValue = "true") boolean eagerload 
     ) {
         log.debug("REST request to get a page of Coches");
         Page<Coche> page;
@@ -155,11 +158,17 @@ public class CocheResource {
         } else {
             page = cocheService.findAll(pageable);
         }
-       
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
-
+    @GetMapping("/coches/color/color2")
+    public ResponseEntity<List<Coche>> getAllCoches( String color) {
+        log.debug("REST request to make a filter to Coches");
+        return ResponseEntity.ok().body(cocheService.buscarfiltro(color));
+    }
+    
+    
+    
     /**
      * {@code GET  /coches/:id} : get the "id" coche.
      *
@@ -193,6 +202,12 @@ public class CocheResource {
         page = cocheService.devolverFalse(pageable);
         log.debug("REST request to get Coche : {}", pageable);
         return ResponseEntity.ok().body(page.getContent());
+    }
+    @GetMapping("/coches/color/{color}")
+    public ResponseEntity<List<Coche>>getAllCochesColor(@PathVariable String color)
+ {
+        log.debug("REST request to get Coche  color: {}", color);
+        return ResponseEntity.ok().body(cocheService.buscarcolor(color));
     }
     /**
      * {@code DELETE  /coches/:id} : delete the "id" coche.

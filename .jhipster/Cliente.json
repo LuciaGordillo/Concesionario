@@ -21,6 +21,11 @@
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     }
+    {
+      "fieldName": "empresa",
+      "fieldType": "boolean",
+      "fieldValidateRules": ["required"]
+    }
   ],
   "jpaMetamodelFiltering": false,
   "name": "Cliente",

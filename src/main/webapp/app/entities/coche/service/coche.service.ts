@@ -31,7 +31,7 @@ export class CocheService {
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<ICoche>(`${this.resourceUrl}/${id}`, { observe: 'response' }); 
   }
-
+  
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<ICoche[]>(this.resourceUrl, { params: options, observe: 'response' });
@@ -43,6 +43,14 @@ export class CocheService {
   query3(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<ICoche[]>(`${this.resourceUrl+"/vendido/false"}`, {params: options, observe: 'response' });
+  }
+/*   buscar(color: String) {
+    
+    return this.http.get<ICoche[]>(`${this.resourceUrl}/color/${color}`,{ observe: 'response' });
+  } */
+  buscar(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<ICoche[]>(`${this.resourceUrl}/color/color2`,{ params: options, observe: 'response' });
   }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });

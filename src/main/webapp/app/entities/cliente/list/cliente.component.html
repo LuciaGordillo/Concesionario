@@ -58,7 +58,12 @@
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.direccion }}</td>
           <td>{{ cliente.telefono }}</td>
-          <td>{{ cliente.empresa }}</td>
+          <td>
+          <fa-icon *ngIf="cliente.empresa != true" icon="user"></fa-icon>
+          <fa-icon *ngIf="cliente.empresa == true" icon="building"></fa-icon>
+
+            
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

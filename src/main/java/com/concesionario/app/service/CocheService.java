@@ -2,9 +2,12 @@ package com.concesionario.app.service;
 
 import com.concesionario.app.domain.Coche;
 import com.concesionario.app.repository.CocheRepository;
+import com.concesionario.app.repository.specifications.CocheSpecification;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.hibernate.internal.FilterHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -88,6 +91,7 @@ public class CocheService {
         log.debug("Request to get all Coches");
         return cocheRepository.findAll(pageable);
     }
+  
 
     /**
      * Get all the coches with eager load of many-to-many relationships.
@@ -127,5 +131,12 @@ public class CocheService {
         log.debug("Request to delete Coche : {}", id);
         cocheRepository.deleteById(id);
     }
-
+    public List<Coche> buscarcolor(String color){
+        log.debug("Llega a consulta color");
+        return cocheRepository.findByColorContaining(color);
+    }
+    public List<Coche> buscarfiltro(String filtro){
+        log.debug("Llega a consulta filtro");
+       return cocheRepository.findAll(CocheSpecification.busquedaCoche(filtro));
+    }
 }

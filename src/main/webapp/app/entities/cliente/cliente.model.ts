@@ -4,7 +4,7 @@ export interface ICliente {
   nombre?: string;
   direccion?: string | null;
   telefono?: number;
-  empresa?: boolean | null;
+  empresa?: boolean;
 }
 
 export class Cliente implements ICliente {
@@ -14,7 +14,7 @@ export class Cliente implements ICliente {
     public nombre?: string,
     public direccion?: string | null,
     public telefono?: number,
-    public empresa?: boolean |null
+    public empresa?: boolean,
   ) {}
 }
 

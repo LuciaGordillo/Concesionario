@@ -19,6 +19,7 @@ logging:
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
     com.concesionario.app: DEBUG
+    javax.management: WARN
 
 spring:
   devtools:

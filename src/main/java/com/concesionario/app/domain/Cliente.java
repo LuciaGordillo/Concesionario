@@ -105,18 +105,17 @@ public class Cliente implements Serializable {
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
+ 
+
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    public Boolean getEmpresa() {
+        return empresa;
+    }
+
     public void setEmpresa(Boolean empresa) {
         this.empresa = empresa;
     }
-    public Cliente empresa(boolean empresa) {
-        this.setEmpresa(empresa);
-        return this;
-    }
-    public void getEmpresa(Boolean empresa) {
-        this.empresa = empresa;
-    }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {

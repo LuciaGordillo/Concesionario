@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * Spring Data SQL repository for the Coche entity.
  */
 @Repository
-public interface CocheRepository extends JpaRepository<Coche, Long> {
+public interface CocheRepository extends JpaRepository<Coche, Long>, JpaSpecificationExecutor<Coche> {
     default Optional<Coche> findOneWithEagerRelationships(Long id) {
         return this.findOneWithToOneRelationships(id);
     }
@@ -31,6 +31,8 @@ public interface CocheRepository extends JpaRepository<Coche, Long> {
     
     Page<Coche> findByVendidoFalse(Pageable pageable);
 
+    List<Coche> findByColorContaining(String color);
+
     @Query(
         value = "select distinct coche from Coche coche left join fetch coche.marca left join fetch coche.modelo",
         countQuery = "select count(distinct coche) from Coche coche"
@@ -42,6 +44,7 @@ public interface CocheRepository extends JpaRepository<Coche, Long> {
 
     @Query("select coche from Coche coche left join fetch coche.marca left join fetch coche.modelo where coche.id =:id")
     Optional<Coche> findOneWithToOneRelationships(@Param("id") Long id);
+
 
   
 }
